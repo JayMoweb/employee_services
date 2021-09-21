@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Models\EmployeeMaster;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -79,39 +80,33 @@ class RegisterController extends Controller
 
     public function fetch() {
         $masterFramework = DB::table('framework_master')->get();
-        // dd($masterFramework);die;
         return view('register',compact('masterFramework'));
     }
 
-    public function create(User $user,request $request) {
-        //dd($request);
+    public function create(User $user,request $request) {   
+
+        $user = new User();
+        
         $request->validate([
             'firstname' =>'required',
             'lastname'  => 'required',
             'email'    =>'required',
             'password' =>'required',
-            'confirmpassword' =>'required'
+            'confirmpassword' =>'required',
+            // 'image' => 'required | image| mimes:jpqg,peng,jpg',
         ]);
-
-        $userInsert = array(
-            'firstname' => $request->firstname,
-            'lastname'  => $request->lastname,
-            'email'     => $request->email,
-            'password'  => Hash::make($request->password),
-            'role'      => "user",
-            'status'    => '1',
-        );
-        
-        $id = DB::table('users')->insertGetId($userInsert);
-        $technology = $request->framework;
-        
-        foreach ($technology as $key => $value) {
-                $data = array(
-                    'framework_id' =>$value,
-                    'user_id'      =>$id
-                );
-            DB::table('framework_employee_mapping')->insert($data);
-        }
+            dd($request);
+            // $imageExtension = $request->
+            $user->firstname =  $request->firstname;
+            $user->lastname  = $request->lastname;
+            $user->email    = $request->email;
+            $user->password = Hash::make($request->password);
+            $user->role     = "user";
+            $user->status    = '1';
+            $user->save();
+            
+            $user->technology()->sync($request->framework);
+           
         return redirect('login');
     }
 }

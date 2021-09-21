@@ -103,7 +103,7 @@
               <option>-Select Technology-</option>
           @foreach($masterFramework as $value)
               <option value="{{$value->id}}">{{$value->framework_name}}</option>
-          @endforeach    `
+          @endforeach
         </select>
       </div>
     </div>
@@ -146,7 +146,7 @@
       messages : {
         firstname : {
           required : 'Enter the firstname'
-        },
+        },•••••
         lastname : {
           required : 'Enter the lastname'
         },

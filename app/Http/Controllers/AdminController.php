@@ -11,15 +11,8 @@ class AdminController extends Controller
 {
     //
     public function AllShowRecord() {
-    	// $allRecord = DB::table('users')->get();
-// $allRecord = FrameworkEmployee::with('user')->get();
-        $allRecord = DB::table('framework_employee_mapping')
-                    ->leftjoin('framework_master','framework_employee_mapping.framework_id', '=', 'framework_master.id')
-                    ->leftjoin('users','framework_employee_mapping.user_id','=','users.id')
-                    ->get();
-           // dd($data); 
-
-           // dd($allRecord);        
+    
+        $allRecord = User::get();       
     	return view('adminDashboard',['allRecord' => $allRecord]);
     }
    

@@ -56,8 +56,13 @@
         <td>{{$value->firstname}}</td>
         <td>{{$value->lastname}}</td>
         <td>{{$value->email}}</td>
-        <td>{{$value->framework_name}}</td>
-        <td>{{$value->created_at}}</td>
+        <td>
+            {{ $value->technology_formatted }}
+        </td>
+        <td>
+            {{\Carbon\Carbon::parse($value->created_at)->format('d-F-Y')}}
+            
+        </td>
         <td>
           <input type="checkbox" data-id="{{$value->id}}" class="status" data-toggle="toggle"  value="{{$value->status ? 0 : 1 }}" {{$value->status ? 'checked' : ''; }}>
         </td>

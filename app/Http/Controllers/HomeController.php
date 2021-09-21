@@ -18,16 +18,16 @@ class HomeController extends Controller
         return view('dashboard',['user' => $user]); 
     }
     public function editProfile(User $user,$id) {
-    	$editProfileId = User::find($id);
-    	return view('editProfile',['edit' => $editProfileId]);
+        $editProfileId = User::find($id);
+    	return response()->json(['success'=>'Successfully',compact('editProfileId')]);
     }
     public function profile(User $user,request $request, $id) {
     	$data = User::find($id);
     	$data->firstname = $request->firstname;
     	$data->lastname = $request->lastname;
-    	$data->email = $request->email;
+        $data->email = $request->email;
     	$data->save();
-    	return redirect('dashboard');
+    	return response()->json(['Success' =>'successfully']);
     }
     public function editPassword(request $request) {
     	DB::table('users')->where('id',auth()->user()->id)->update(['password' => Hash::make($request->newpassword)]);

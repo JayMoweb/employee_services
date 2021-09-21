@@ -32,7 +32,9 @@ Route::get('/forgotPassword', function () {
     return view('forgotPassword');
 });
 
-
+Route::get('/datatable', function () {
+    return view('datatable');
+});
 
 Route::group(['middleware' => 'preventBackHistory'],function() {
 

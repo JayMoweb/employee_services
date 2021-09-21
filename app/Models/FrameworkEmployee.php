@@ -8,9 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class FrameworkEmployee extends Model
 {
     use HasFactory;
+    
     protected $table = 'framework_employee_mapping';
 
-     public function user() {
-        return $this->belongsTo(User::class);
-    }
+     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'framework_id',
+        'user_id'
+    ];
 }

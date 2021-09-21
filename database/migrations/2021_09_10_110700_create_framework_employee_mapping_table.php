@@ -17,6 +17,7 @@ class CreateFrameworkEmployeeMappingTable extends Migration
             $table->id();
             $table->unsignedBigInteger('framework_id');
             $table->unsignedBigInteger('user_id');
+            $table->string('framework_child_name');
             $table->foreign('framework_id')->references('id')->on('framework_master')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

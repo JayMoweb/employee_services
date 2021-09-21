@@ -43,7 +43,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function frameworkEmployee() {
-        return $this->hasMany(FrameworkEmployee::class);
+    public function technology() {
+        
+        return $this->belongsToMany(EmployeeMaster::class,'framework_employee_mapping','user_id','framework_id');
+    }
+
+    public function getTechnologyFormattedAttribute(){
+        
+        return implode(', ', $this->technology->pluck('framework_name')->toArray());
+
     }
 }

@@ -15,7 +15,8 @@ class AddNameToAbcTable extends Migration
     {
         Schema::table('abc', function (Blueprint $table) {
             // 
-            $table->string('name');
+            $table->string('namee');
+            $table->string('contact');
         });
     }
 

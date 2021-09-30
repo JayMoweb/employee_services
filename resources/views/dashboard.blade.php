@@ -26,8 +26,11 @@
       <li class="nav-item active">
         <a class="nav-link" href="{{url('changePassword')}}">Change Password</a>
       </li>
-        <li class="nav-item active">
+      <li class="nav-item active">
         <a class="nav-link" href="{{url('index')}}">DropDown</a>
+      </li>
+			<li class="nav-item active">
+        <a class="nav-link" href="{{url('barchart')}}">BarChart</a>
       </li>
     </ul>
     <a href="{{url('logout')}}" style="margin-left: 850px;">Logout</a>

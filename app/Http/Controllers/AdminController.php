@@ -9,6 +9,7 @@ use App\Models\FrameworkEmployee;
 
 class AdminController extends Controller
 {
+    
     //
     public function AllShowRecord() {
     

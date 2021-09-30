@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use DB;
+use Storage;
 
 class RegisterController extends Controller
 {
@@ -93,16 +94,16 @@ class RegisterController extends Controller
             'email'    =>'required',
             'password' =>'required',
             'confirmpassword' =>'required',
-            // 'image' => 'required | image| mimes:jpqg,peng,jpg',
+            // 'image' => 'required | image| nullable',
         ]);
-            dd($request);
-            // $imageExtension = $request->
+            
             $user->firstname =  $request->firstname;
             $user->lastname  = $request->lastname;
             $user->email    = $request->email;
             $user->password = Hash::make($request->password);
             $user->role     = "user";
             $user->status    = '1';
+            // $user->image = $fileName;
             $user->save();
             
             $user->technology()->sync($request->framework);

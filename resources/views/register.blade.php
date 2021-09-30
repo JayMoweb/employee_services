@@ -31,7 +31,7 @@
     <!-- <h1 align="center">Registration</h1> -->
     <div class="card" style="border: 1px solid black;height: 550px;
     width: 500px;">
-    <form method="post" action="{{route('create')}}" id="form" class="form-inline justify-content-center" style="margin: auto;">
+    <form method="post" action="{{route('create')}}" id="form" class="form-inline justify-content-center" style="margin: auto;" enctype="multipart/form-data">
       @csrf
     <div class="row">
       <div class="col-md-12">
@@ -107,6 +107,12 @@
         </select>
       </div>
     </div>
+    {{--  <div class="row">
+      <div class="col-md-12">
+        <label>Image</label>
+        <input type="file" name="image" id="image" class="form-control">
+      </div>
+    </div>  --}}
     <div style="width: 100px;margin-left: auto;margin-right: auto;margin-top: 10px;">
       <input type="submit" class="btn btn-success" name="submit" value="Register">
     </div> 
@@ -146,7 +152,7 @@
       messages : {
         firstname : {
           required : 'Enter the firstname'
-        },•••••
+        },
         lastname : {
           required : 'Enter the lastname'
         },
@@ -168,9 +174,6 @@
       },
       unhighlight : function(element) {
         $(element).removeClass('error');
-      },
-      submitHandler() {
-        form.submit();
       }
     });
   });

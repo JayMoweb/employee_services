@@ -13,13 +13,13 @@ class UpdateNameToContactTable extends Migration
      */
     public function up()
     {
-        Schema::table('abc', function (Blueprint $table) {
-            $table->renameColumn('contact','name');
-        });
-        Schema::table('abc', function (Blueprint $table) {
-            $table->string('name')->change();
+        // Schema::table('abc', function (Blueprint $table) {
+        //     $table->renameColumn('contact','name');
+        // });
+        // Schema::table('abc', function (Blueprint $table) {
+        //     $table->string('name')->change();
              
-        });
+        // });
     }
 
     /**

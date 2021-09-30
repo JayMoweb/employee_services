@@ -24,7 +24,8 @@ class AdminSeeder extends Seeder
         	"email"		=> 'jay@moweb.com',
         	"password"	=> Hash::make('jay@1234'),
         	"role"		=> 'admin',
-            "status"    =>'0'    
+            "status"    =>'0',
+            "image"     =>'',   
         );
         DB::table('users')->insert($admin);
     }

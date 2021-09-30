@@ -48,7 +48,8 @@ Route::get('/adminDashboard', function () {
 
 Route::get('/adminDashboard', [App\Http\Controllers\AdminController::class, 'allShowRecord'])->name('adminDashboard')->middleware('auth','adminAuthenticate');
 Route::get('/change_status', [App\Http\Controllers\AdminController::class, 'changeStatus'])->name('change_status')->middleware('auth');
-
+    
+    Route::get('/barchart', [App\Http\Controllers\HomeController::class,'barchart'])->name('barchart');
 	Route::get('/dashboard', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard')->middleware('auth','userAuthenticate');
 	Route::get('/editProfile/{id}', [App\Http\Controllers\HomeController::class, 'editProfile'])->name('editProfile')->middleware('auth');
 	Route::post('/profile/edit/{id}', [App\Http\Controllers\HomeController::class, 'profile'])->name('profile.edit')->middleware('auth');
